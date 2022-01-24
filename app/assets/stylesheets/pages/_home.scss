@@ -1,1 +1,62 @@
 // Specific CSS for your home-page
+.hex{
+  color: #FFEA40;
+  font-size: 135px;
+  /* background-color: #fff0; */
+  /* float: left; */
+  /* margin-right: -26px;
+  margin-bottom: -114px; */
+}
+.hex-center{
+  color:#FFC107;
+}
+
+.hex-parent{
+  display: grid;
+  place-items: center;
+  position: relative;
+  margin-left: -17px;
+  margin-bottom: -127px;
+  // used unset below because .hex-parent was inheritting form row in bootstrap
+  flex-shrink: unset;
+  width: unset;
+  max-width: unset;
+  padding-right: unset;
+  padding-left: unset;
+  margin-top: unset;
+}
+.letter-btn{
+  position: absolute;
+  font-size: 55px;
+  height: 82px;
+  width: 70px;
+  position: absolute;
+  left: 50%;
+  margin-left: -35px;
+  top: 46%;
+  margin-top: -25px;
+  background-color: #fff0;
+  outline: none;
+  border: none;
+  z-index: 99;
+}
+.form-control-updated{
+  display: block;
+  width: 100%;
+  font-size: 40px;
+  color: #000000;
+  background-color: #fff;
+  border: none;
+  text-align: center;
+}
+.column{
+  width: 20px;
+}
+.table td, .table th{
+  padding: 0rem;
+}
+.table-borderless th, .table-borderless thead th {
+  border: 0;
+  width: 44px;
+  text-align: center;
+}
