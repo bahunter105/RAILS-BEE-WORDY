@@ -6,24 +6,28 @@ class PagesController < ApplicationController
   # require 'dotenv'
 
   def home
-    url = "https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json"
-    word_serialized = URI.open(url).read
-    word = JSON.parse(word_serialized)
+    # url = "https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json"
+    # word_serialized = URI.open(url).read
+    # word = JSON.parse(word_serialized)
 
-    alf = ('a'..'z').to_a
-    @letters = alf.sample(7)
+    # alf = ('a'..'z').to_a
+    # @letters = alf.sample(7)
+    @letters = ["b", "l", "f", "g", "e", "t", "p"]
     until (@letters.include?("a")||@letters.include?("e")||@letters.include?("i")||@letters.include?("o")||@letters.include?("u")||@letters.include?("y")) do
       @letters = alf.sample(7)
     end
 
     @prefiltered_words = []
-    word.each_key do |key|
-      if (key.include? @letters[0]) && (/^[#{@letters}]{4,}$/ === key)
-        @prefiltered_words << key
-      end
-    end
-    word_list_check
-    @num_of_words = @filtered_words.length
+    # word.each_key do |key|
+    #   if (key.include? @letters[0]) && (/^[#{@letters}]{4,}$/ === key)
+    #     @prefiltered_words << key
+    #   end
+    # end
+    # word_list_check
+    # @num_of_words = @filtered_words.length
+    @words_and_def = {}
+    @filtered_words = []
+    @num_of_words = 1
     # binding.pry
   end
 
