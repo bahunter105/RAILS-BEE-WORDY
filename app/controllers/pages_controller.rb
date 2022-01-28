@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     until (@letters.include?("a")||@letters.include?("e")||@letters.include?("i")||@letters.include?("o")||@letters.include?("u")||@letters.include?("y")) do
       @letters = alf.sample(7)
     end
-
+    gon.letters = @letters.last(6)
     @prefiltered_words = []
     # word.each_key do |key|
     #   if (key.include? @letters[0]) && (/^[#{@letters}]{4,}$/ === key)

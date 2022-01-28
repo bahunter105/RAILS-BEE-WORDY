@@ -1,52 +1,51 @@
 <div class="container">
   <div class="row" style="height: 939px;">
-    <div class="container col-6" style="min-width:360px;">
+    <div class="container col-6" style="min-width:360px;" data-controller="game">
       <div style="margin-top: 85px;">
         <form>
-          <input class="form-control-updated" type="text" placeholder="Type or Click" aria-label="Search">
+          <input class="form-control-updated" type="text" placeholder="Type or Click" aria-label="Search" data-game-target="form">
         </form>
-      </div>
       <!-- honey comb -->
       <div style="min-height: 400px;">
         <div class="row justify-content-center">
           <div class="hex-parent">
             <p class="hex">&#x2B22;</p>
-            <button class="letter-btn"><%= @letters[1].upcase %></button>
+            <button class="letter-btn" data-game-target="zero" data-action="click->game#typingZero"><%= @letters[1].upcase %></button>
           </div>
           <div class="hex-parent">
             <p class="hex">&#x2B22;</p>
-            <button class="letter-btn"><%= @letters[2].upcase %></button>
+            <button class="letter-btn" data-game-target="one" data-action="click->game#typingOne"><%= @letters[2].upcase %></button>
           </div>
         </div>
         <div class="row justify-content-center">
           <div class="hex-parent">
             <p class="hex">&#x2B22;</p>
-            <button class="letter-btn"><%= @letters[3].upcase %></button>
+            <button class="letter-btn" data-game-target="two" data-action="click->game#typingTwo"><%= @letters[3].upcase %></button>
           </div>
           <div class="hex-parent">
             <p class="hex hex-center">&#x2B22;</p>
-            <button class="letter-btn"><%= @letters[0].upcase %></button>
+            <button class="letter-btn" data-game-target="center" data-action="click->game#typingCenter"><%= @letters[0].upcase %></button>
           </div>
           <div class="hex-parent">
             <p class="hex">&#x2B22;</p>
-            <button class="letter-btn"><%= @letters[4].upcase %></button>
+            <button class="letter-btn" data-game-target="three" data-action="click->game#typingThree"><%= @letters[4].upcase %></button>
           </div>
         </div>
         <div class="row justify-content-center">
           <div class="hex-parent">
             <p class="hex">&#x2B22;</p>
-            <button class="letter-btn"><%= @letters[5].upcase %></button>
+            <button class="letter-btn" data-game-target="four" data-action="click->game#typingFour"><%= @letters[5].upcase %></button>
           </div>
           <div class="hex-parent">
             <p class="hex">&#x2B22;</p>
-            <button class="letter-btn"><%= @letters[6].upcase %></button>
+            <button class="letter-btn" data-game-target="five" data-action="click->game#typingFive"><%= @letters[6].upcase %></button>
           </div>
         </div>
       </div>
       <!-- buttons -->
       <div class="row justify-content-center">
-        <button type="button" class="btn btn-light" style="min-width: 90px;">Delete</button>
-        <button type="button" class="btn btn-light" style="margin-left: 8px;margin-right: 8px;">
+        <button type="button" class="btn btn-light" style="min-width: 90px;" data-action="click->game#delete">Delete</button>
+        <button type="button" class="btn btn-light" style="margin-left: 8px;margin-right: 8px;" data-action="click->game#shuffle">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat"
             viewBox="0 0 16 16">
             <path
@@ -55,7 +54,7 @@
               d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
           </svg>
         </button>
-        <button type="button" class="btn btn-light" style="min-width: 90px;margin-right: 17px;">Enter</button>
+        <button type="button" class="btn btn-light" style="min-width: 90px;margin-right: 17px;" data-action="click->game#enter">Enter</button>
       </div>
       <!-- results table -->
       <div>
