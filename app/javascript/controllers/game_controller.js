@@ -31,7 +31,17 @@ export default class extends Controller {
     //   this.toggleTarget.style.display = 'block';
   }
   enter() {
-    console.log(this.zeroTarget.innerHTML)
+    if (gon.found_words.includes(this.formTarget.value.toLowerCase())) {
+      //  block of code to be executed if condition1 is true
+      alert("word already found!")
+    } else if (gon.filtered_words.includes(this.formTarget.value.toLowerCase())) {
+      alert("word exists!");
+      gon.found_words.push(this.formTarget.value.toLowerCase());
+    }else {
+      //  block of code to be executed if the condition1 is false and condition2 is false
+      alert("word does not exist")
+    }
+    this.formTarget.value = ""
   }
 
   typingZero() {
@@ -57,5 +67,9 @@ export default class extends Controller {
   }
   delete() {
     this.formTarget.value = this.formTarget.value.slice(0, -1)
+  }
+
+  preventDefault(event) {
+    event.preventDefault();
   }
 }

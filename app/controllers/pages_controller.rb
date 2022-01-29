@@ -25,8 +25,19 @@ class PagesController < ApplicationController
     # end
     # word_list_check
     # @num_of_words = @filtered_words.length
-    @words_and_def = {}
-    @filtered_words = []
+    @words_and_def = {"beef":[
+      "the flesh of an adult domestic bovine (such as a steer or cow) used as food",
+      "an ox, cow, or bull in a full-grown or nearly full-grown state; especially : a steer or cow fattened for food",
+      "a dressed carcass of a beef animal"],
+      "beetle":[
+      "any of an order (Coleoptera) of insects having four wings of which the outer pair are modified into stiff elytra that protect the inner pair when at rest",
+      "any of various insects resembling a beetle"
+      ]
+    }
+    gon.words_and_def = @words_and_def
+    @filtered_words = ["beetle", "beef"]
+    gon.filtered_words = @filtered_words
+    gon.found_words = []
     @num_of_words = 1
     # binding.pry
   end
