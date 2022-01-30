@@ -10,7 +10,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["zero", "one", "two", "three", "four", "five", "center", "form"]
+  static targets = ["zero", "one", "two", "three", "four", "five", "center", "form", "progressbar", "rank"]
 
   // connect() {
   //   console.log('Shuffle')
@@ -31,17 +31,40 @@ export default class extends Controller {
     //   this.toggleTarget.style.display = 'block';
   }
   enter() {
-    if (gon.found_words.includes(this.formTarget.value.toLowerCase())) {
+    const foundWord = this.formTarget.value.toLowerCase()
+    if (gon.found_words.includes(foundWord)) {
       //  block of code to be executed if condition1 is true
       alert("word already found!")
-    } else if (gon.filtered_words.includes(this.formTarget.value.toLowerCase())) {
+    } else if (gon.filtered_words.includes(foundWord)) {
       alert("word exists!");
-      gon.found_words.push(this.formTarget.value.toLowerCase());
+      gon.found_words.push(foundWord);
     }else {
       //  block of code to be executed if the condition1 is false and condition2 is false
       alert("word does not exist")
     }
     this.formTarget.value = ""
+    document.querySelector(`#${foundWord}`).style.display = "block"
+  }
+
+  progressUpdate() {
+    let perdone = (gon.found_words.length / gon.filtered_words.length) * 100
+    let rank = ""
+    if (perdone < 16) {
+      rank = "Beginner";
+    } else if (perdone >= 16 && perdone < 32) {
+      rank = "Good"
+    } else if (perdone >= 32 && perdone < 48) {
+      rank = "Solid";
+    } else if (perdone >= 48 && perdone < 64) {
+      rank = "Great";
+    } else if (perdone >= 64 && perdone < 80) {
+      rank = "Amazing";
+    } else if (perdone >= 80) {
+      rank = "Genius";
+    }
+
+    this.progressbarTarget.style.width = `${perdone}%`
+    this.rankTarget.innerHTML = `Rank: ${rank}`
   }
 
   typingZero() {
@@ -70,6 +93,12 @@ export default class extends Controller {
   }
 
   preventDefault(event) {
-    event.preventDefault();
+    if (event.key == "Enter") {
+      event.preventDefault();
+      this.enter();
+      this.progressUpdate();
+    }else {
+      console.log(`Key "${event.key}" repeating  [event: keydown]`);
+    }
   }
 }

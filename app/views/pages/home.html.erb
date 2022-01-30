@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" style="margin-top: 8px;">
   <div class="row" style="height: 939px;" data-controller="game">
     <div class="container col-6" style="min-width:360px;">
       <div style="margin-top: 85px;">
         <form>
-          <input class="form-control-updated" type="text" placeholder="Type or Click" aria-label="Search" data-game-target="form" data-action="game#preventDefault">
+          <input class="form-control-updated" type="text" placeholder="Type or Click" aria-label="Search" data-game-target="form" data-action="keydown->game#preventDefault">
         </form>
       </div>
       <!-- honey comb -->
@@ -55,7 +55,7 @@
               d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
           </svg>
         </button>
-        <button type="button" class="btn btn-light" style="min-width: 90px;margin-right: 17px;" data-action="click->game#enter">Enter</button>
+        <button type="button" class="btn btn-light" style="min-width: 90px;margin-right: 17px;" data-action="click->game#enter click->game#progressUpdate">Enter</button>
       </div>
       <!-- results table -->
       <div>
@@ -623,7 +623,7 @@
                       sum
                     %>
                   </td>
-                  <td><%= @num_of_words %></td>
+                  <td><%= @filtered_words.length %></td>
                 </tr>
               </tbody>
             </table>
@@ -633,7 +633,7 @@
     </div>
     <div class="h-100" style="flex: 1 1 344px;margin-left: 8px;margin-right: 8px;">
       <div style="height: 10%;">
-        <p>Progress Bar</p>
+        <h5 data-game-target="rank">Rank: </h5>
         <%# <div class="container">
           <p>awesome</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill"
@@ -643,15 +643,15 @@
           </svg>
         </div> %>
         <div class="progress">
-          <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75"
-          aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 0%" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" data-game-target="progressbar"></div>
         </div>
       </div>
       <div class="container border" style="height: 90%;padding-left: 5px;padding-right: 5px;;overflow-y: scroll;">
 
         <% @filtered_words.each do |word| %>
           <%# Card Template %>
-          <div class="card bg-light" style="padding-left: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 5px;margin-top: 5px;" data-controller="dropdown">
+          <div id="<%= word %>" class="card bg-light" style="padding-left: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 5px;margin-top: 5px;" data-controller="dropdown">
             <div class="card-body" style="padding-bottom: 0.25rem;padding-top: 0.25rem;" data-action="click->dropdown#displayToggle">
               <h5 class="card-title" style="padding-top: 0px;margin-top: 0px;margin-bottom: 0px;">
                 <%= word %>
@@ -661,7 +661,7 @@
                     d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
                 </svg>
               </h5>
-              <div data-dropdown-target="toggle">
+              <div class="word-def" data-dropdown-target="toggle">
                 <% @words_and_def[:"#{word}"].each_with_index do |line, index| %>
                   <p class="card-text"> <%= p "#{index + 1}. #{line}" %></p>
                 <% end %>
