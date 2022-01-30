@@ -38,12 +38,12 @@ export default class extends Controller {
     } else if (gon.filtered_words.includes(foundWord)) {
       alert("word exists!");
       gon.found_words.push(foundWord);
+      document.querySelector(`#${foundWord}`).style.display = "block"
     }else {
       //  block of code to be executed if the condition1 is false and condition2 is false
       alert("word does not exist")
     }
     this.formTarget.value = ""
-    document.querySelector(`#${foundWord}`).style.display = "block"
   }
 
   progressUpdate() {
@@ -97,8 +97,6 @@ export default class extends Controller {
       event.preventDefault();
       this.enter();
       this.progressUpdate();
-    }else {
-      console.log(`Key "${event.key}" repeating  [event: keydown]`);
     }
   }
 }
