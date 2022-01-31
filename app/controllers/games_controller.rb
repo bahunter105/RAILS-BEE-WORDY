@@ -8,8 +8,7 @@ class GamesController < ApplicationController
 
     alf = ('a'..'z').to_a
     alf.sample(7)
-    (alf1.include?("a")||alf1.include?("e")||alf1.include?("i")||alf1.include?("o")||alf1.include?("u")||alf1.include?("y")
-
+    (alf1.include?("a")||alf1.include?("e")||alf1.include?("i")||alf1.include?("o")||alf1.include?("u")||alf1.include?("y"))
   end
 
   def new_game
