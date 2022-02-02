@@ -1,6 +1,6 @@
 require 'json'
 require 'open-uri'
-require 'dotenv'
+# require 'dotenv'
 
 url = "https://dictionaryapi.com/api/v3/references/collegiate/json/favor?key=ac861c65-0f06-4568-a306-cde44e820298"
 
